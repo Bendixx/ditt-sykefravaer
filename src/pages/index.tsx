@@ -25,13 +25,13 @@ const Index = () => {
 
     return (
         <>
+            <Brodsmuler brodsmuler={brodsmuler} />
+
             <Banner>
                 <Heading size="xlarge" level="1" className="sidebanner__tittel">
                     {tekst('sidetittel.liste')}
                 </Heading>
             </Banner>
-
-            <Brodsmuler brodsmuler={brodsmuler} />
 
             <div className="limit">
                 <QueryStatusPanel />

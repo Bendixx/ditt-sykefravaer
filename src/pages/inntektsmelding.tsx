@@ -28,13 +28,13 @@ const Inntektsmelding = () => {
 
     return (
         <>
+            <Brodsmuler brodsmuler={brodsmuler} />
+
             <Banner>
                 <Heading size="xlarge" className="sidebanner__tittel">
                     {tekst('inntektsmelding.side-tittel-manglende')}
                 </Heading>
             </Banner>
-
-            <Brodsmuler brodsmuler={brodsmuler} />
 
             <div className="limit">
                 <Heading size="medium">
