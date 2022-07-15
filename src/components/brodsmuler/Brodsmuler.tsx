@@ -105,7 +105,7 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
     return (
         <nav className="brodsmuler" ref={smulesti} aria-label="Du er her: ">
             <div className="limit">
-{/*
+                {/*
                 <Person />
 */}
                 <BodyShort as="ul" className="brodsmuler__smuler">
