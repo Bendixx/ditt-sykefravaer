@@ -71,8 +71,8 @@ interface BrodsmulerProps {
 }
 
 const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
-    const [ synlige, setSynlige ] = useState<Brodsmule[]>([])
-    const [ skjerm, setSkjerm ] = useState<number>()
+    const [synlige, setSynlige] = useState<Brodsmule[]>([])
+    const [skjerm, setSkjerm] = useState<number>()
     const smulesti = useRef<HTMLElement>(null)
     const sykefravaerKlikkbar = brodsmuler.length > 0
 
@@ -87,14 +87,14 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
             setSkjerm(window.innerWidth)
         })
         setSynlige(
-            skjerm! <= LITEN ? [ brodsmuler[brodsmuler.length - 1] ] : brodsmuler
+            skjerm! <= LITEN ? [brodsmuler[brodsmuler.length - 1]] : brodsmuler
         )
         // eslint-disable-next-line
-    }, [ skjerm ])
+    }, [skjerm])
 
     const toggleSynlige = () => {
         if (synlige.length === brodsmuler.length) {
-            setSynlige([ brodsmuler[brodsmuler.length - 1] ])
+            setSynlige([brodsmuler[brodsmuler.length - 1]])
             smulesti.current?.classList.remove('apen')
         } else {
             setSynlige(brodsmuler)
