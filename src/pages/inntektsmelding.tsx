@@ -30,11 +30,7 @@ const Inntektsmelding = () => {
         <>
             <Brodsmuler brodsmuler={brodsmuler} />
 
-            <Banner>
-                <Heading size="xlarge" className="sidebanner__tittel">
-                    {tekst('inntektsmelding.side-tittel-manglende')}
-                </Heading>
-            </Banner>
+            <Banner>{tekst('inntektsmelding.side-tittel-manglende')}</Banner>
 
             <div className="limit">
                 <Heading size="medium">

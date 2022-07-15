@@ -11,7 +11,7 @@ const Banner = ({ children }: BannerProps) => {
             <div className="limit">
                 <img
                     className="sidebanner__ikon"
-                    src="/syk/sykefravaer/static/sykepenger.svg"
+                    src="/syk/sykefravaer/static/sykefravaer-ikon.svg"
                     alt="Sykepenger"
                 />
                 <Heading size="large" level="1" className="sidebanner__tittel">

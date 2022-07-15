@@ -1,4 +1,4 @@
-import { Heading, Modal } from '@navikt/ds-react'
+import { Modal } from '@navikt/ds-react'
 import React, { useEffect } from 'react'
 
 import { beskyttetSideUtenProps } from '../auth/beskyttetSide'
@@ -27,11 +27,7 @@ const Index = () => {
         <>
             <Brodsmuler brodsmuler={brodsmuler} />
 
-            <Banner>
-                <Heading size="xlarge" level="1" className="sidebanner__tittel">
-                    {tekst('sidetittel.liste')}
-                </Heading>
-            </Banner>
+            <Banner>{tekst('sidetittel.liste')}</Banner>
 
             <div className="limit">
                 <QueryStatusPanel />
