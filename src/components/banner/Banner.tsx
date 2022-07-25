@@ -1,4 +1,5 @@
 import { Heading } from '@navikt/ds-react'
+import Image from 'next/image'
 import React from 'react'
 
 interface BannerProps {
@@ -9,7 +10,7 @@ const Banner = ({ children }: BannerProps) => {
     return (
         <header className="sidebanner">
             <div className="limit">
-                <img
+                <Image
                     className="sidebanner__ikon"
                     src="/syk/sykefravaer/static/sykefravaer-ikon.svg"
                     alt="Illustrasjon sykefravær"

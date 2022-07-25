@@ -1,4 +1,5 @@
 import { Popover } from '@navikt/ds-react'
+import Image from 'next/image'
 import React, { useRef, useState } from 'react'
 
 import { personas } from '../../data/mock/testperson'
@@ -18,11 +19,11 @@ const Person = () => {
 
     return (
         <>
-            <img
+            <Image
                 src="/syk/sykefravaer/static/person.svg"
-                alt="Du"
+                alt=""
                 className="brodsmuler__ikon"
-                ref={person}
+                // ref={person}
             />
             <Vis
                 hvis={kanVelgePerson && visInnhold}

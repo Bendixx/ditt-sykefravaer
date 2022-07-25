@@ -1,4 +1,5 @@
 import { BodyShort, Heading, HelpText } from '@navikt/ds-react'
+import Image from 'next/image'
 import React from 'react'
 
 import useNarmesteledere from '../../query-hooks/useNarmesteledere'
@@ -77,7 +78,7 @@ const Arbeidssituasjon = () => {
             render={() => (
                 <section className="din-situasjon">
                     <header className="din-situasjon__header">
-                        <img
+                        <Image
                             src="/syk/sykefravaer/static/arbeidssituasjon.svg"
                             alt="Arbeidssituasjon"
                         />
