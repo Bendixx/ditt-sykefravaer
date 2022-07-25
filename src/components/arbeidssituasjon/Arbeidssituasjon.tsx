@@ -116,7 +116,7 @@ const Arbeidssituasjon = () => {
                                 <div className="situasjon__panel" key={idx}>
                                     <div className="situasjon__ikon">
                                         {/* eslint-disable-next-line */}
-                                        <img
+                                        <Image
                                             src={arbeidssituasjonTilIkon(
                                                 arbeidssituasjon as any
                                             )}
