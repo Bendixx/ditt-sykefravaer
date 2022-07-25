@@ -12,7 +12,7 @@ const Banner = ({ children }: BannerProps) => {
                 <img
                     className="sidebanner__ikon"
                     src="/syk/sykefravaer/static/sykefravaer-ikon.svg"
-                    alt="Sykepenger"
+                    alt="Illustrasjon sykefravær"
                 />
                 <Heading size="large" level="1" className="sidebanner__tittel">
                     {children}

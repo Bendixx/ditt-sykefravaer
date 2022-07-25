@@ -156,7 +156,7 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
                     className="js-toggle"
                     onClick={toggleSynlige}
                 >
-                    <Collapse className="opp-pil" />
+                    <Collapse className="chevron--opp" />
                 </button>
             </div>
         </nav>
