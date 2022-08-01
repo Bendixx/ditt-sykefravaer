@@ -66,12 +66,20 @@ module.exports = withPlugins(
                     source: '/:path*',
                     headers: cspHeader,
                 },
+                {
+                    source: '/api/:path*',
+                    headers: [
+                        {
+                            key: 'Cache-Control',
+                            value: 'private, no-cache, no-store, max-age=0, must-revalidate',
+                        },
+                    ],
+                },
             ]
         },
         basePath: '/syk/sykefravaer',
         lessLoaderOptions: {},
         assetPrefix: process.env.ASSET_PREFIX || '',
-        generateEtags: false, //Disabler etag i pages
         serverRuntimeConfig: {
             // Will only be available on the server side
             decoratorEnv: process.env.DECORATOR_ENV,
@@ -91,6 +99,11 @@ module.exports = withPlugins(
             dittSykefravaerBackendClientId:
                 process.env.DITT_SYKEFRAVAER_BACKEND_CLIENT_ID,
             spinnsynBackendClientId: process.env.SPINNSYN_BACKEND_CLIENT_ID,
+            sykmeldingerBackendClientId:
+                process.env.SYKMELDINGER_BACKEND_CLIENT_ID,
+            sykepengesoknadBackendClientId:
+                process.env.SYKEPENGESOKNAD_BACKEND_CLIENT_ID,
+            narmestelederClientId: process.env.NARMESTELEDER_CLIENT_ID,
         },
         publicRuntimeConfig: {
             // Will be available on both server and client
@@ -102,7 +115,6 @@ module.exports = withPlugins(
             amplitudeEnabled: process.env.AMPLITUDE_ENABLED,
             environment: process.env.ENVIRONMENT,
             spinnsynFrontendInterne: process.env.SPINNSYN_FRONTEND_INTERNE,
-            sykmeldingerBackendRoot: process.env.SYKMELDINGER_BACKEND_ROOT,
             syfoApiRoot: process.env.SYFOAPI_ROOT,
             sykepengesoknadUrl: process.env.SYKEPENGESOKNAD_URL,
             spinnsynUrl: process.env.SPINNSYN_URL,
@@ -110,7 +122,6 @@ module.exports = withPlugins(
             aktivitetsplanUrl: process.env.AKTIVITETSPLAN_URL,
             oppfolgingsplanUrl: process.env.OPPFOLGINGSPLAN_URL,
             dialogmoteUrl: process.env.DIALOGMOTE_URL,
-            narmestelederUrl: process.env.NARMESTELEDER_URL,
             backendSoknadApp: process.env.BACKEND_SOKNAD_APP,
             snartSluttUrl: process.env.SNART_SLUTT_URL,
         },

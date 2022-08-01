@@ -23,6 +23,8 @@ const Person = () => {
                 src="/syk/sykefravaer/static/person.svg"
                 alt=""
                 className="brodsmuler__ikon"
+                width="32px"
+                height="32px"
                 // ref={person}
             />
             <Vis

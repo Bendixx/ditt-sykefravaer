@@ -81,6 +81,9 @@ const Arbeidssituasjon = () => {
                         <Image
                             src="/syk/sykefravaer/static/arbeidssituasjon.svg"
                             alt="Arbeidssituasjon"
+                            layout="fixed"
+                            width="40px"
+                            height="40px"
                         />
                         <Heading size="medium" level="2">
                             {tekst('din-situasjon.tittel.2')}
@@ -94,13 +97,16 @@ const Arbeidssituasjon = () => {
                             return (
                                 <div className="situasjon__panel" key={idx}>
                                     <div className="situasjon__ikon">
-                                        <img
+                                        <Image
                                             src={arbeidssituasjonTilIkon(
                                                 'ARBEIDSTAKER'
                                             )}
                                             alt={tekst(
                                                 'din-situasjon.ARBEIDSTAKER'
                                             )}
+                                            layout="fixed"
+                                            width={19}
+                                            height={24}
                                         />
                                     </div>
                                     <Arbeidsgiver orgnummer={orgnummer} />
@@ -121,6 +127,8 @@ const Arbeidssituasjon = () => {
                                                 arbeidssituasjon as any
                                             )}
                                             alt={arbeidssituasjonLedetekst}
+                                            width="24px"
+                                            height="24px"
                                         />
                                     </div>
                                     <div className="situasjon__innhold">
