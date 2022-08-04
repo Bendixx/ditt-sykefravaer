@@ -6,6 +6,7 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import { dittNavUrl } from '../../utils/environment'
 import Vis from '../Vis'
+import Person from './Person'
 
 const LITEN = 768
 
@@ -104,10 +105,9 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
 
     return (
         <nav className="brodsmuler" ref={smulesti} aria-label="Du er her: ">
+            <Person />
+
             <div className="limit">
-                {/*
-                <Person />
-*/}
                 <BodyShort as="ul" className="brodsmuler__smuler">
                     <Vis
                         hvis={skjerm! <= LITEN}
