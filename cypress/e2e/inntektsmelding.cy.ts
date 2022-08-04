@@ -3,7 +3,7 @@ describe('Tester inntektsmelding', () => {
         cy.visit(
             'http://localhost:8080/syk/sykefravaer?testperson=mangler-inntektsmelding'
         )
-        cy.injectAxe()
+        // cy.injectAxe()
 
         cy.get('.oppgaver > .navds-alert')
             .should('have.length', 1)
@@ -29,26 +29,26 @@ describe('Tester inntektsmelding', () => {
                     'Det vil si at hvis du får sykepenger fra NAV, kan vi ikke utbetale dem før vi har behandlet søknaden ferdig.'
             )
 
-        cy.checkA11y()
+        // cy.checkA11y()
     })
 
     it('Mottatt inntektsmelding varsel kan lukkes', () => {
         cy.visit(
             'http://localhost:8080/syk/sykefravaer?testperson=mottatt-inntektsmelding'
         )
-        cy.injectAxe()
+        // cy.injectAxe()
 
         cy.get('.oppgaver > .navds-alert')
             .should('have.length', 1)
             .contains(
                 ' Vi har mottatt inntektsmeldingen fra Posten Norge AS for sykefravær f.o.m 15. mars 2022.'
             )
-        cy.checkA11y()
+        // cy.checkA11y()
 
         cy.get('.oppgaver > .navds-alert').get('.navds-button').click()
 
         cy.get('.oppgaver > .navds-alert').should('have.length', 0)
-        cy.checkA11y()
+        // cy.checkA11y()
     })
 })
 

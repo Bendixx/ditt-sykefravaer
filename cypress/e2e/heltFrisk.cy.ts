@@ -1,7 +1,7 @@
 describe('Tester helt frisk person', () => {
     before(() => {
         cy.visit('http://localhost:8080/syk/sykefravaer?testperson=helt-frisk')
-        cy.injectAxe()
+        // cy.injectAxe()
     })
 
     it('Laster startside', () => {
@@ -20,9 +20,11 @@ describe('Tester helt frisk person', () => {
         )
     })
 
-    it('Tester accessibility', () => {
-        cy.checkA11y()
-    })
+    /*
+        it('Tester accessibility', () => {
+            cy.checkA11y()
+        })
+    */
 })
 
 export {}
