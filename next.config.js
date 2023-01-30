@@ -38,6 +38,11 @@ const nextConfig = {
             },
         ]
     },
+    webpack: (config) => {
+        config.optimization.minimize = false
+
+        return config
+    },
     basePath: '/syk/sykefravaer',
     assetPrefix: process.env.ASSET_PREFIX || undefined,
     serverRuntimeConfig: {
