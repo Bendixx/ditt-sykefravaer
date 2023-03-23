@@ -1,19 +1,21 @@
 apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
-  name: {{ appname }}
+  name: info-labs-sanering
   namespace: flex
   labels:
     team: flex
-    branchState: {{ branchState }}
 spec:
   image: {{ image }}
   port: 8080
   ingresses:
-    - {{ ingress }}
+    - https://sykefravaer.labs.nais.io
+    - https://ditt-sykefravaer.labs.nais.io
+    - https://sykepengesoknad.labs.nais.io
+    - https://sykepenger.labs.nais.io
   replicas:
-    min: {{ replicas }}
-    max: {{ replicas }}
+    min: 1
+    max: 1
   liveness:
     path: api/internal/isAlive
   readiness:
@@ -43,7 +45,5 @@ spec:
       value: "prod"
     - name: AMPLITUDE_ENABLED
       value: "false"
-    - name: ASSET_PREFIX
-      value: "https://cdn.nav.no/flex/ditt-sykefravaer"
     - name: FEILMELDINGER_URL
       value: "https://www.nav.no/syk/feilmeldinger"

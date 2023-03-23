@@ -4,13 +4,56 @@ on:
   push:
 
 jobs:
-  felles-workflow:
-    uses: navikt/flex-github-actions-workflows/.github/workflows/next-js.yml@master
-    permissions:
-      packages: 'write'
-      contents: 'read'
-      id-token: 'write'
-    secrets: inherit
-    with:
-      base-path: syk/sykefravaer
-      sentry-enabled: false
+  build-and-publish:
+    name: Bygg, test og publiser docker image
+    runs-on: ubuntu-latest
+    outputs:
+      image: ${{ steps.lag-image.outputs.image }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+      - name: next.js cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+      - name: Generer image
+        id: lag-image
+        run: |
+          TIME=$(TZ="Europe/Oslo" date +%Y.%m.%d-%H.%M)
+          COMMIT=$(git rev-parse --short=8 HEAD)
+          VERSION=$TIME-$COMMIT
+          echo "image=ghcr.io/navikt/labsdead:$VERSION" >> $GITHUB_OUTPUT
+      - name: Install npm dependencies
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm ci
+      - name: Build application
+        run: npm run build
+        env:
+          SENTRY_URL: https://sentry.gc.nav.no/
+          SENTRY_ORG: nav
+          SENTRY_PROJECT: ${{ inputs.sentry-project }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      - name: Docker login
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo ${GITHUB_TOKEN} | docker login ghcr.io --username ${GITHUB_REPOSITORY} --password-stdin
+      - name: Bygg og push Docker image
+        run: |
+          docker build . -f Dockerfile -t ${{ steps.lag-image.outputs.image }}
+          docker push ${{ steps.lag-image.outputs.image }}
+      - name: Deploy demo branch til dev-gcp
+        uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: labs-gcp
+          RESOURCE: nais/app/labsdead.yaml
+          DEPLOY_SERVER: deploy.nais.io:443
+          IMAGE: ${{ steps.lag-image.outputs.image }}
