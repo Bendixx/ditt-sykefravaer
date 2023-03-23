@@ -38,7 +38,6 @@ const nextConfig = {
             },
         ]
     },
-    basePath: '/syk/sykefravaer',
     assetPrefix: process.env.ASSET_PREFIX || undefined,
     serverRuntimeConfig: {
         // Will only be available on the server side

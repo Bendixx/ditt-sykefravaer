@@ -1,0 +1,49 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: {{ appname }}
+  namespace: flex
+  labels:
+    team: flex
+    branchState: {{ branchState }}
+spec:
+  image: {{ image }}
+  port: 8080
+  ingresses:
+    - {{ ingress }}
+  replicas:
+    min: {{ replicas }}
+    max: {{ replicas }}
+  liveness:
+    path: api/internal/isAlive
+  readiness:
+    path: api/internal/isReady
+  env:
+    - name: MOCK_BACKEND
+      value: "true"
+    - name: ENVIRONMENT
+      value: "labs"
+    - name: OPPLAERING
+      value: "true"
+    - name: SYKEPENGESOKNAD_URL
+      value: "https://demo.ekstern.dev.nav.no/syk/sykepengesoknad"
+    - name: SPINNSYN_URL
+      value: "https://demo.ekstern.dev.nav.no/syk/sykepenger"
+    - name: SYKMELDING_URL
+      value: "https://sykmeldinger.labs.nais.io/syk/sykmeldinger"
+    - name: AKTIVITETSPLAN_URL
+      value: "https://aktivitetsplan.nav.no/"
+    - name: OPPFOLGINGSPLAN_URL
+      value: "https://oppfolgingsplaner.labs.nais.io/syk/oppfolgingsplaner/sykmeldt"
+    - name: DIALOGMOTE_URL
+      value: "https://dialogmoter.labs.nais.io/syk/dialogmoter/sykmeldt"
+    - name: MINSIDE_URL
+      value: "https://www.nav.no/minside/"
+    - name: DECORATOR_ENV
+      value: "prod"
+    - name: AMPLITUDE_ENABLED
+      value: "false"
+    - name: ASSET_PREFIX
+      value: "https://cdn.nav.no/flex/ditt-sykefravaer"
+    - name: FEILMELDINGER_URL
+      value: "https://www.nav.no/syk/feilmeldinger"
