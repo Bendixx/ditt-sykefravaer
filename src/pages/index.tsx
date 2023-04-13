@@ -27,7 +27,7 @@ const Index = () => {
     return (
         <>
             <Banner tittel={tekst('sidetittel.liste')} />
-
+            demo-production-dependencies
             <QueryStatusPanel />
             <IngenSykmelding />
             <Oppgaver />
