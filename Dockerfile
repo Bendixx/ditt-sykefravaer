@@ -9,6 +9,6 @@ COPY /public ./public
 COPY /node_modules ./node_modules
 
 ENV PORT=8080
-ENV NODE_OPTIONS='-r next-logger'
+ENV NODE_OPTIONS='-r @navikt/next-logger'
 
 CMD ["./node_modules/next/dist/bin/next", "start"]
